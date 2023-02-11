@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   CountriesGrid,
   MainContainer,
@@ -11,22 +11,28 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { DataGrid } from '@mui/x-data-grid/DataGrid';
+import { ICountry } from '../../interfaces/country.interface';
+import { TheContext } from '../../TheContext';
+import { fetchAllCountries } from '../../fetchFunctions';
 
 const MainPage: React.FC = () => {
-  const [pageSize, setPageSize] = React.useState<number>(4);
-  const COLUMNS_COUNTRIES: GridColDef[] = [
-    { field: 'id', headerName: 'ID', flex: 1 },
-    { field: '2', headerName: '2', flex: 1 },
-    { field: '3', headerName: '3', flex: 1 },
-  ];
+  const [data, setData] = useState<ICountry[]>([]);
+  const [pageSize, setPageSize] = useState<number>(4);
 
-  const test_data = [
-    { id: 1, '2': 2, '3': 3 },
-    { id: 1, '2': 2, '3': 3 },
-    { id: 1, '2': 2, '3': 3 },
-    { id: 1, '2': 2, '3': 3 },
-    { id: 1, '2': 2, '3': 3 },
-    { id: 1, '2': 2, '3': 3 },
+  useEffect(() => {
+    fetchCountries();
+  }, []);
+
+  const fetchCountries = async () => {
+    setData(await fetchAllCountries());
+  };
+
+  const COLUMNS_COUNTRIES: GridColDef[] = [
+    { field: 'flag', headerName: 'Flag', flex: 1 },
+    { field: 'name', headerName: 'Name', flex: 1 },
+    { field: 'region', headerName: 'Region', flex: 1 },
+    { field: 'population', headerName: 'Population', flex: 1 },
+    { field: 'languages', headerName: 'Languages', flex: 1 },
   ];
 
   return (
@@ -38,7 +44,7 @@ const MainPage: React.FC = () => {
       <DataGrid
         columns={COLUMNS_COUNTRIES}
         // getRowHeight={() => 'auto'}
-        rows={test_data}
+        rows={data}
         sx={CountriesGrid}
         pageSize={pageSize}
         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
