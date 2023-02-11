@@ -12,20 +12,33 @@ import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { DataGrid } from '@mui/x-data-grid/DataGrid';
 import { ICountry } from '../../interfaces/country.interface';
-import { TheContext } from '../../TheContext';
-import { fetchAllCountries } from '../../fetchFunctions';
+import { fetchAllCountries, fetchCountriesByName } from '../../fetchFunctions';
 import { Stack } from '@mui/system';
-import { Paragliding } from '@mui/icons-material';
 
 const MainPage: React.FC = () => {
   const [data, setData] = useState<ICountry[]>([]);
+  const [search, setSearch] = useState<string>('');
   const [pageSize, setPageSize] = useState<number>(4);
 
+  // get all countries
   useEffect(() => {
-    fetchCountries();
+    getAllCountries();
   }, []);
 
-  const fetchCountries = async () => {
+  // get countries by name, if name is empty seatch for all countries
+  useEffect(() => {
+    if (search === '') {
+      getAllCountries();
+    } else {
+      getCountriesByName(search);
+    }
+  }, [search]);
+
+  const getCountriesByName = async (name: string) => {
+    setData(await fetchCountriesByName(name));
+  };
+
+  const getAllCountries = async () => {
     setData(await fetchAllCountries());
   };
 
@@ -48,7 +61,7 @@ const MainPage: React.FC = () => {
       renderCell: (params) => (
         <Stack direction='column' spacing={1}>
           {params.value.map((language: string, index: number) => (
-            <Typography>{language}</Typography>
+            <Typography key={index}>{language}</Typography>
           ))}
         </Stack>
       ),
@@ -59,7 +72,11 @@ const MainPage: React.FC = () => {
     <Box sx={MainContainer}>
       <Box sx={NavContainer}>
         <Typography sx={NavLogo}>Dmitry Sinyavskiy Countries App</Typography>
-        <TextField sx={NavSearch} />
+        <TextField
+          sx={NavSearch}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </Box>
       <DataGrid
         columns={COLUMNS_COUNTRIES}
