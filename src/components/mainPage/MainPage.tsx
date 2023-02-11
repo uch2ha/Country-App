@@ -14,6 +14,8 @@ import { DataGrid } from '@mui/x-data-grid/DataGrid';
 import { ICountry } from '../../interfaces/country.interface';
 import { TheContext } from '../../TheContext';
 import { fetchAllCountries } from '../../fetchFunctions';
+import { Stack } from '@mui/system';
+import { Paragliding } from '@mui/icons-material';
 
 const MainPage: React.FC = () => {
   const [data, setData] = useState<ICountry[]>([]);
@@ -28,11 +30,29 @@ const MainPage: React.FC = () => {
   };
 
   const COLUMNS_COUNTRIES: GridColDef[] = [
-    { field: 'flag', headerName: 'Flag', flex: 1 },
+    {
+      field: 'flag',
+      headerName: 'Flag',
+      flex: 1,
+      minWidth: 400,
+      renderCell: (params) => <img src={params.value} width={200} />,
+    },
     { field: 'name', headerName: 'Name', flex: 1 },
     { field: 'region', headerName: 'Region', flex: 1 },
     { field: 'population', headerName: 'Population', flex: 1 },
-    { field: 'languages', headerName: 'Languages', flex: 1 },
+    {
+      field: 'languages',
+      headerName: 'Languages',
+      flex: 1,
+      type: 'string',
+      renderCell: (params) => (
+        <Stack direction='column' spacing={1}>
+          {params.value.map((language: string, index: number) => (
+            <Typography>{language}</Typography>
+          ))}
+        </Stack>
+      ),
+    },
   ];
 
   return (
@@ -43,7 +63,7 @@ const MainPage: React.FC = () => {
       </Box>
       <DataGrid
         columns={COLUMNS_COUNTRIES}
-        // getRowHeight={() => 'auto'}
+        rowHeight={175}
         rows={data}
         sx={CountriesGrid}
         pageSize={pageSize}

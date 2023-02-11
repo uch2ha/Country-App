@@ -11,7 +11,11 @@ export const fetchAllCountries = async (): Promise<ICountry[]> => {
       const name = country.name.official as string;
       const region = country.region as string;
       const population = country.population as number;
-      const languages = country.languages as String[];
+      let languages = ['none'] as string[];
+      // if country has languages then add them, if not use "none" property
+      if (country.languages) {
+        languages = Object.values(country.languages);
+      }
       const flag = country.flags.png as string;
       const id = uuidv4();
 
