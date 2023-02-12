@@ -6,7 +6,12 @@ import {
   CardBackBtn as CardCloseBtn,
   CountryCardContainer,
   CountryCardHeader,
+  CountryCardImg,
+  CountryCardMapBtn,
+  CountryCardText,
   MainContainer,
+  CountryCardMapBtnContainer,
+  CountryCardTextContaner,
 } from '../../sxStyles';
 import {
   Box,
@@ -58,11 +63,15 @@ const CountryPage: React.FC = () => {
             subheader={country?.capital.join(',')}
           />
         </Box>
-        <CardMedia>
-          <img src={country?.flag} width={600} />
+        <CardMedia sx={CountryCardImg}>
+          <img src={country?.flag} width={'70%'} />
         </CardMedia>
-        <CardContent>
-          <Typography variant='body1' color='text.secondary'>
+        <CardContent sx={CountryCardTextContaner}>
+          <Typography
+            sx={CountryCardText}
+            variant='body1'
+            color='text.secondary'
+          >
             The country belongs to {country?.region} region and{' '}
             {country?.subregion} sub-region. Located at the {country?.latlng[0]}{' '}
             °N and {country?.latlng[1]} °W, this country has population of{' '}
@@ -71,11 +80,12 @@ const CountryPage: React.FC = () => {
             according to the CIA World Factbook
           </Typography>
         </CardContent>
-        <CardActions disableSpacing sx={{ width: '90%' }}>
-          <IconButton aria-label='maps'>
+        <CardActions disableSpacing sx={CountryCardMapBtnContainer}>
+          <IconButton aria-label='maps' sx={CountryCardMapBtn}>
             <a href={country?.googleMaps} target='_blank'>
-              <PlaceIcon />
+              <PlaceIcon sx={{ fontSize: 30, color: '#343434' }} />
             </a>
+            <Typography>{country?.official_name}</Typography>
           </IconButton>
         </CardActions>
       </Card>

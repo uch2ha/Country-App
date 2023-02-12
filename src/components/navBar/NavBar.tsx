@@ -10,9 +10,18 @@ interface INavBar {
 const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
   return (
     <Box sx={NavContainer}>
-      <Typography sx={NavLogo}>Dmitry Sinyavskiy Countries App</Typography>
+      <Typography sx={NavLogo}>
+        Dmitry Sinyavskiy &nbsp;|&nbsp; Countries App
+      </Typography>
       {handleSearch && (
         <TextField
+          inputProps={{
+            style: { color: 'white' },
+            root: {
+              borderColor: 'orange',
+            },
+          }}
+          label='Search'
           sx={NavSearch}
           value={search}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearch(e)}

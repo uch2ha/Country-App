@@ -1,7 +1,6 @@
 import { SxProps } from '@mui/material';
 
-// Main page
-
+// root
 export const MainContainer: SxProps = {
   display: 'flex',
   flexDirection: 'column',
@@ -11,22 +10,38 @@ export const MainContainer: SxProps = {
   height: '100vh',
 };
 
+// NavBar
+
 export const NavContainer: SxProps = {
-  width: '100%',
-  height: '5rem',
+  width: '95%',
+  height: '7rem',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+  background: 'transparent',
 };
 
-export const NavLogo: SxProps = { paddingLeft: '3rem' };
+export const NavLogo: SxProps = {
+  paddingLeft: '2rem',
+  fontFamily: 'Fearce',
+  fontSize: '1.5rem',
+};
 
-export const NavSearch: SxProps = { paddingRight: '3rem' };
+export const NavSearch: SxProps = {
+  paddingRight: '3rem',
+  '& .MuiInputLabel-root': { color: 'white' }, //styles the label
+  '& .MuiOutlinedInput-root': {
+    '& > fieldset': { borderColor: 'white' },
+  },
+};
+
+// Main page
 
 export const CountriesGrid: SxProps = {
-  width: '100%',
-  backgroundColor: 'white',
+  width: '95%',
+  marginBottom: '2rem',
+  color: '#f7f7f7',
 };
 
 // Country page
@@ -38,15 +53,40 @@ export const CountryCardContainer: SxProps = {
   justifyContent: 'flex-start',
   alignItems: 'center',
   width: '40%',
-  // minHeight: '50rem',
   overflow: 'scroll',
 };
 
 export const CountryCardHeader: SxProps = {
   minHeight: '4rem',
-  backgroundColor: 'red',
+  backgroundColor: '#c9c9c9',
   paddingInline: '2rem',
 };
 export const CardBackBtn: SxProps = {
   marginTop: '1rem',
+};
+export const CountryCardImg: SxProps = {
+  marginBlock: '1rem',
+  width: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  display: 'flex',
+};
+export const CountryCardTextContaner: SxProps = {
+  padding: '0',
+  paddingInline: '2rem',
+  fontSize: '2rem',
+};
+export const CountryCardText: SxProps = {
+  fontSize: '1.3rem',
+  color: '#0f0f0f',
+};
+export const CountryCardMapBtnContainer: SxProps = {
+  width: '100%',
+};
+export const CountryCardMapBtn: SxProps = {
+  padding: '0',
+  paddingLeft: '2rem',
+  paddingTop: '0.5rem',
+  paddingBottom: '0.5rem',
+  color: '#989898',
 };
