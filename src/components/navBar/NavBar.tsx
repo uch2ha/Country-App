@@ -9,7 +9,16 @@ interface INavBar {
 
 const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
   return (
-    <Box sx={NavContainer}>
+    <Box
+      sx={NavContainer}
+      style={
+        handleSearch
+          ? {}
+          : {
+              justifyContent: 'center',
+            }
+      }
+    >
       <Typography sx={NavLogo}>
         Dmitry Sinyavskiy &nbsp;|&nbsp; Countries App
       </Typography>

@@ -23,13 +23,11 @@ export const NavContainer: SxProps = {
 };
 
 export const NavLogo: SxProps = {
-  paddingLeft: '2rem',
   fontFamily: 'Fearce',
   fontSize: '1.5rem',
 };
 
 export const NavSearch: SxProps = {
-  paddingRight: '3rem',
   '& .MuiInputLabel-root': { color: 'white' }, //styles the label
   '& .MuiOutlinedInput-root': {
     '& > fieldset': { borderColor: 'white' },
@@ -42,6 +40,12 @@ export const CountriesGrid: SxProps = {
   width: '95%',
   marginBottom: '2rem',
   color: '#f7f7f7',
+  '& .MuiTablePagination-root': { color: 'white' },
+
+  '& .MuiDataGrid-row: hover': {
+    cursor: 'pointer',
+    backgroundColor: 'rgb(85, 85, 85)',
+  },
 };
 
 // Country page
