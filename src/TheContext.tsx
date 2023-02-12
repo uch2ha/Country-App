@@ -11,19 +11,23 @@ interface IProps {
 
 const TheContextProvider: FC<IProps> = ({ children }) => {
   const [data, setData] = useState<ICountry[]>([]);
+  const [country, setCountry] = useState<ICountry | null>(null);
 
+  // // get all countries
   // useEffect(() => {
-  //   fetchCountries();
+  //   getAllCountries();
   // }, []);
 
-  // const fetchCountries = async () => {
-  //   setData(await fetchAllCountries());
+  // const getAllCountries = async () => {
+  //   const result = await fetchAllCountries();
+  //   setData(result);
   // };
 
   return (
     <TheContext.Provider
       value={{
-        data,
+        country,
+        setCountry,
       }}
     >
       {children}

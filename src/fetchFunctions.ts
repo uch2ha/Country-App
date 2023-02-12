@@ -5,18 +5,35 @@ import { ICountry } from './interfaces/country.interface';
 // filter to get only need data and add id property to each
 const filterData = (countries: any[]): ICountry[] => {
   return countries.map((country: any) => {
-    const name = country.name.official as string;
+    const id = uuidv4();
+    const common_name = country.name.common as string;
+    const official_name = country.name.official as string;
     const region = country.region as string;
+    const subregion = country.subregion as string;
+    const capital = country.capital as string;
+    const googleMaps = country.maps.googleMaps as string;
     const population = country.population as number;
+    const flag = country.flags.png as string;
+    const latlng = country.latlng as string[];
     let languages = ['none'] as string[];
     // if country has languages then add them, if not use "none" property
     if (country.languages) {
       languages = Object.values(country.languages);
     }
-    const flag = country.flags.png as string;
-    const id = uuidv4();
 
-    return { id, name, region, population, languages, flag };
+    return {
+      id,
+      common_name,
+      official_name,
+      region,
+      subregion,
+      capital,
+      googleMaps,
+      population,
+      flag,
+      latlng,
+      languages,
+    };
   });
 };
 

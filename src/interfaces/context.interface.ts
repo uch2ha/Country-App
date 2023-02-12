@@ -1,5 +1,6 @@
 import { ICountry } from './country.interface';
 
 export interface IContext {
-  data: ICountry[];
+  country: ICountry | null;
+  setCountry: (country: ICountry | null) => void;
 }

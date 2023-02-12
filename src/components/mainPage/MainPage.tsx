@@ -14,15 +14,21 @@ import { DataGrid } from '@mui/x-data-grid/DataGrid';
 import { ICountry } from '../../interfaces/country.interface';
 import { fetchAllCountries, fetchCountriesByName } from '../../fetchFunctions';
 import { Stack } from '@mui/system';
+import { TheContext } from '../../TheContext';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
   const [data, setData] = useState<ICountry[]>([]);
   const [search, setSearch] = useState<string>('');
   const [pageSize, setPageSize] = useState<number>(4);
 
+  const context = useContext(TheContext);
+  const navigation = useNavigate();
+
   // get all countries
   useEffect(() => {
     getAllCountries();
+    context?.setCountry(null);
   }, []);
 
   // get countries by name, if name is empty seatch for all countries
@@ -34,12 +40,17 @@ const MainPage: React.FC = () => {
     }
   }, [search]);
 
+  const getAllCountries = async () => {
+    setData(await fetchAllCountries());
+  };
+
   const getCountriesByName = async (name: string) => {
     setData(await fetchCountriesByName(name));
   };
 
-  const getAllCountries = async () => {
-    setData(await fetchAllCountries());
+  const handleCellClick = (data: ICountry) => {
+    context?.setCountry(data);
+    navigation('/country');
   };
 
   const COLUMNS_COUNTRIES: GridColDef[] = [
@@ -50,7 +61,7 @@ const MainPage: React.FC = () => {
       minWidth: 400,
       renderCell: (params) => <img src={params.value} width={200} />,
     },
-    { field: 'name', headerName: 'Name', flex: 1 },
+    { field: 'common_name', headerName: 'Name', flex: 1 },
     { field: 'region', headerName: 'Region', flex: 1 },
     { field: 'population', headerName: 'Population', flex: 1 },
     {
@@ -84,6 +95,7 @@ const MainPage: React.FC = () => {
         rows={data}
         sx={CountriesGrid}
         pageSize={pageSize}
+        onCellClick={(params) => handleCellClick(params.row)}
         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
         rowsPerPageOptions={[4, 8, 12, 16, 20]}
         pagination
