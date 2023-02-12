@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React, { useState, useContext, useEffect } from 'react';
 import {
   CountriesGrid,
@@ -7,8 +7,6 @@ import {
   NavLogo,
   NavSearch,
 } from '../../sxStyles';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 import { GridColDef } from '@mui/x-data-grid';
 import { DataGrid } from '@mui/x-data-grid/DataGrid';
 import { ICountry } from '../../interfaces/country.interface';
@@ -16,6 +14,7 @@ import { fetchAllCountries, fetchCountriesByName } from '../../fetchFunctions';
 import { Stack } from '@mui/system';
 import { TheContext } from '../../TheContext';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../navBar/NavBar';
 
 const MainPage: React.FC = () => {
   const [data, setData] = useState<ICountry[]>([]);
@@ -46,6 +45,10 @@ const MainPage: React.FC = () => {
 
   const getCountriesByName = async (name: string) => {
     setData(await fetchCountriesByName(name));
+  };
+
+  const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setSearch(e.target.value);
   };
 
   const handleCellClick = (data: ICountry) => {
@@ -81,14 +84,7 @@ const MainPage: React.FC = () => {
 
   return (
     <Box sx={MainContainer}>
-      <Box sx={NavContainer}>
-        <Typography sx={NavLogo}>Dmitry Sinyavskiy Countries App</Typography>
-        <TextField
-          sx={NavSearch}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </Box>
+      <NavBar search={search} handleSearch={handleSearch} />
       <DataGrid
         columns={COLUMNS_COUNTRIES}
         rowHeight={175}
