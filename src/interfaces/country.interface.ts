@@ -2,12 +2,14 @@ export interface ICountry {
   id: string;
   common_name: string;
   official_name: string;
-  capital: string;
+  capital: string[];
   region: string;
   subregion: string;
   latlng: string[];
   googleMaps: string;
   population: number;
+  area: number;
   languages: Array<string>;
+  independent: boolean;
   flag: string;
 }

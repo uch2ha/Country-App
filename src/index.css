@@ -18,6 +18,16 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+/* Remove scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* a {
   font-weight: 500;
   color: #646cff;

@@ -10,11 +10,13 @@ const filterData = (countries: any[]): ICountry[] => {
     const official_name = country.name.official as string;
     const region = country.region as string;
     const subregion = country.subregion as string;
-    const capital = country.capital as string;
+    const capital = country.capital as string[];
     const googleMaps = country.maps.googleMaps as string;
     const population = country.population as number;
+    const area = country.area as number;
     const flag = country.flags.png as string;
     const latlng = country.latlng as string[];
+    const independent = country.independent as boolean;
     let languages = ['none'] as string[];
     // if country has languages then add them, if not use "none" property
     if (country.languages) {
@@ -30,8 +32,10 @@ const filterData = (countries: any[]): ICountry[] => {
       capital,
       googleMaps,
       population,
+      area,
       flag,
       latlng,
+      independent,
       languages,
     };
   });
