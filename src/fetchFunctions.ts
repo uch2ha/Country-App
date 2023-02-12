@@ -2,7 +2,7 @@ import ky from 'ky';
 import { v4 as uuidv4 } from 'uuid';
 import { ICountry } from './interfaces/country.interface';
 
-// filter to get only need data and add id property to each
+//  filter to get only needed data and add the id property to each
 const filterData = (countries: any[]): ICountry[] => {
   return countries.map((country: any) => {
     const id = uuidv4();
@@ -50,13 +50,13 @@ export const fetchAllCountries = async (): Promise<ICountry[]> => {
     return filteredData;
   } catch (error) {
     console.log(error);
-    throw new Error('Something went wrong ');
+    throw new Error('Something went wrong');
   }
 };
 
 export const fetchCountriesByName = async (
   name: string
-): Promise<ICountry[]> => {
+): Promise<ICountry[] | []> => {
   try {
     const data: any = await ky
       .get(`https://restcountries.com/v3.1/name/${name}`)
@@ -66,7 +66,7 @@ export const fetchCountriesByName = async (
 
     return filteredData;
   } catch (error) {
-    console.log(error);
-    throw new Error('Something went wrong ');
+    // if country was not found returh empty array
+    return [];
   }
 };
