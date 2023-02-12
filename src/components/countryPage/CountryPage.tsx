@@ -64,7 +64,7 @@ const CountryPage: React.FC = () => {
           />
         </Box>
         <CardMedia sx={CountryCardImg}>
-          <img src={country?.flag} width={'70%'} />
+          <img src={country?.flag} width={'275px'} />
         </CardMedia>
         <CardContent sx={CountryCardTextContaner}>
           <Typography
@@ -73,10 +73,11 @@ const CountryPage: React.FC = () => {
             color='text.secondary'
           >
             The country belongs to {country?.region} region and{' '}
-            {country?.subregion} sub-region. Located at the {country?.latlng[0]}{' '}
-            °N and {country?.latlng[1]} °W, this country has population of{' '}
-            {country?.population} and area of {country?.area} m². It has{' '}
-            {country?.independent ? '' : 'not'} gained the independent,
+            {country?.subregion} sub-region. Located at the{' '}
+            {Number(country?.latlng[0]).toFixed(2)} °N and{' '}
+            {Number(country?.latlng[1]).toFixed(2)} °W. This country has
+            population of {country?.population} and area of {country?.area} m².
+            It has {country?.independent ? '' : 'not'} gained the independent,
             according to the CIA World Factbook
           </Typography>
         </CardContent>

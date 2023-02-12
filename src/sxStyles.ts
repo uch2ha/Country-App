@@ -14,7 +14,7 @@ export const MainContainer: SxProps = {
 
 export const NavContainer: SxProps = {
   width: '95%',
-  height: '7rem',
+  minHeight: '7rem',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
@@ -52,7 +52,8 @@ export const CountriesGrid: SxProps = {
 // Country page
 
 export const CountryCardContainer: SxProps = {
-  marginBlock: '3rem',
+  margintop: '1rem',
+  marginBottom: '2rem',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-start',
