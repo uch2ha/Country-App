@@ -19,9 +19,14 @@ const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
             }
       }
     >
-      <Typography sx={NavLogo}>
-        Dmitry Sinyavskiy &nbsp;|&nbsp; Countries App
-      </Typography>
+      <a
+        href='https://github.com/uch2ha/dmitry-sinyavskiy-countries-app'
+        target='_blank'
+      >
+        <Typography sx={NavLogo}>
+          Dmitry Sinyavskiy &nbsp;|&nbsp; Countries App
+        </Typography>
+      </a>
       {handleSearch && (
         <TextField
           inputProps={{

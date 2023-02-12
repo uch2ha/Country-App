@@ -23,6 +23,7 @@ export const NavContainer: SxProps = {
 };
 
 export const NavLogo: SxProps = {
+  color: '#f7f7f7',
   fontFamily: 'Fearce',
   fontSize: '1.5rem',
 };
