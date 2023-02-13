@@ -1,16 +1,22 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import NavBar from '../../components/navBar/NavBar';
 import { BrowserRouter } from 'react-router-dom';
 
+interface INavBar {
+  search?: string;
+  setSearch?: Function;
+  favPage?: boolean;
+}
+
 describe('NavBar component', () => {
-  let props;
+  let props: INavBar;
 
   beforeEach(() => {
     props = {
       search: '',
       setSearch: jest.fn(),
+      favPage: false,
     };
   });
 
@@ -40,7 +46,7 @@ describe('NavBar component', () => {
         <NavBar {...props} />
       </BrowserRouter>
     );
-    const input = getByLabelText(/search/i);
+    const input = getByLabelText(/search/i) as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'test' } });
     expect(props.setSearch).toHaveBeenCalled();
   });

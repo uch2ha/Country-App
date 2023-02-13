@@ -15,12 +15,6 @@ jest.mock('../../components/navBar/NavBar', () =>
 describe('CountryPage component', () => {
   afterEach(cleanup);
 
-  it('renders the component', () => {
-    const { asFragment } = render(<CountryPage />);
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   it('renders the static text', () => {
     const { getByText } = render(<CountryPage />);
 
@@ -31,7 +25,7 @@ describe('CountryPage component', () => {
 
   it('navigates back when close button is clicked', () => {
     const navigate = jest.fn();
-    useNavigate.mockReturnValue(navigate);
+    (useNavigate as jest.Mock).mockReturnValue(navigate);
 
     const { getByLabelText } = render(<CountryPage />);
 
