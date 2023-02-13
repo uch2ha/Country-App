@@ -28,20 +28,8 @@ import PlaceIcon from '@mui/icons-material/Place';
 import { useNavigate } from 'react-router-dom';
 
 const CountryPage: React.FC = () => {
-  const [country, setCountry] = useState<ICountry | null>(null);
-
   const context = useContext(TheContext);
   const navigation = useNavigate();
-
-  useEffect(() => {
-    setCountryData();
-  }, []);
-
-  const setCountryData = () => {
-    if (context?.country) setCountry(context?.country);
-  };
-
-  console.log(country);
 
   return (
     <Box sx={MainContainer}>
@@ -59,12 +47,12 @@ const CountryPage: React.FC = () => {
               </IconButton>
             }
             sx={CountryCardHeader}
-            title={country?.common_name}
-            subheader={country?.capital.join(',')}
+            title={context?.country?.common_name}
+            subheader={context?.country?.capital.join(',')}
           />
         </Box>
         <CardMedia sx={CountryCardImg}>
-          <img src={country?.flag} width={'275px'} />
+          <img src={context?.country?.flag} width={'275px'} />
         </CardMedia>
         <CardContent sx={CountryCardTextContaner}>
           <Typography
@@ -72,21 +60,22 @@ const CountryPage: React.FC = () => {
             variant='body1'
             color='text.secondary'
           >
-            The country belongs to {country?.region} region and{' '}
-            {country?.subregion} sub-region. Located at the{' '}
-            {Number(country?.latlng[0]).toFixed(2)} °N and{' '}
-            {Number(country?.latlng[1]).toFixed(2)} °W. This country has
-            population of {country?.population} and area of {country?.area} m².
-            It has {country?.independent ? '' : 'not'} gained the independent,
+            The country belongs to {context?.country?.region} region and{' '}
+            {context?.country?.subregion} sub-region. Located at the{' '}
+            {Number(context?.country?.latlng[0]).toFixed(2)} °N and{' '}
+            {Number(context?.country?.latlng[1]).toFixed(2)} °W. This country
+            has population of {context?.country?.population} and area of{' '}
+            {context?.country?.area} m². It has{' '}
+            {context?.country?.independent ? '' : 'not'} gained the independent,
             according to the CIA World Factbook
           </Typography>
         </CardContent>
         <CardActions disableSpacing sx={CountryCardMapBtnContainer}>
           <IconButton aria-label='maps' sx={CountryCardMapBtn}>
-            <a href={country?.googleMaps} target='_blank'>
+            <a href={context?.country?.googleMaps} target='_blank'>
               <PlaceIcon sx={{ fontSize: 30, color: '#343434' }} />
             </a>
-            <Typography>{country?.official_name}</Typography>
+            <Typography>{context?.country?.official_name}</Typography>
           </IconButton>
         </CardActions>
       </Card>
