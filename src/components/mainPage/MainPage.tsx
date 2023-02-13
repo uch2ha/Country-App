@@ -2,7 +2,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { ICountry } from '../../interfaces/country.interface';
 import { TheContext } from '../../TheContext';
-import { fetchAllCountries, fetchCountriesByName } from '../../fetchFunctions';
+import {
+  fetchAllCountries,
+  fetchCountriesByName,
+} from '../../functions/fetchFunctions.fn';
 import { RootContainer } from '../../sxStyles';
 
 import NavBar from '../navBar/NavBar';

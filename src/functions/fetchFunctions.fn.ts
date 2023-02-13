@@ -1,6 +1,6 @@
 import ky from 'ky';
 import { v4 as uuidv4 } from 'uuid';
-import { ICountry } from './interfaces/country.interface';
+import { ICountry } from '../interfaces/country.interface';
 
 //  filter to get only needed data and add the id property to each
 const filterData = (countries: any[]): ICountry[] => {
