@@ -37,7 +37,7 @@ export const NavSearch: SxProps = {
 
 // Main page
 
-export const CountriesGrid: SxProps = {
+export const CountriesGridData: SxProps = {
   width: '95%',
   marginBottom: '2rem',
   color: '#f7f7f7',
