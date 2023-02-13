@@ -6,12 +6,14 @@
 <div> 
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" title="TS" alt="TS" width="50" height="50"/>&nbsp;
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" title="JS" alt="JS" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" title="Materialui" alt="Materialui" width="50" height="50"/>&nbsp;
 </div>
 
 - React application is written in Typescript
 - The user interface is divided into pages that are routed through react-router-dom.
 - Materialui is used for styling
+- Tests are implemented with JavaScript language
 
 ## Installation
 
@@ -57,28 +59,36 @@ npm run preview
 
 ## Functionalities and Usage
 
-<!-- ![Main Page](screenshots/mainPage_1.jpg) -->
+![Main Page](screenshots/mainPage_1.jpg)
+
+- You can use the search field to search by country name
+
+![Main Page search](screenshots/mainPage_search.jpg)
 
 - Select a country to see more information about it
 
-<!-- ![Main Page with calculations](screenshots/mainPage_2.jpg) -->
+![Main Page select](screenshots/mainPage_select.jpg)
 
 - Press the map button to open a new google maps tab with the country location
 
-<!-- ![History page 1](screenshots/historyPage_1.jpg) -->
+![Main Page select](screenshots/countryPage_1.jpg)
 
-- You can use the search field
+- You can sort countries by name, region, and population
 
-<!-- ![navBar 1](screenshots/navBar_1.jpg) -->
+![History page 1](screenshots/main_page_sort_1.jpg)
+
+- The first press will activate sort by a-z, the second by z-a and the third will deactivate sorting
+
+![History page 1](screenshots/main_page_sort_2.jpg)
 
 - By pressing on Logo you will be redirected to this GitHub repository
 
 ## Testing
 
-- If you want to run the tests manually, in the root folder where the file `package.json` is located, run this command in a terminal
+- To run tests, in the root folder where the file `package.json` is located, run this command in a terminal
 
 ```sh
 npm test
 ```
 
-<!-- ![Npm tests](screenshots/npm_tests.jpg) -->
+![Npm tests](screenshots/test.jpg)
