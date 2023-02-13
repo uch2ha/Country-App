@@ -1,4 +1,5 @@
 import { SxProps } from '@mui/material';
+import { calculatePinnedRowsHeight } from '@mui/x-data-grid/hooks/features/rows/gridRowsUtils';
 
 // root
 export const MainContainer: SxProps = {
@@ -50,6 +51,14 @@ export const CountriesGrid: SxProps = {
 };
 
 // Country page
+
+export const CountryPageContainer: SxProps = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '80%',
+};
 
 export const CountryCardContainer: SxProps = {
   margintop: '1rem',
