@@ -37,24 +37,9 @@ const MainPage: React.FC = () => {
     setData(await fetchCountriesByName(name));
   };
 
-  const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const text = e.target.value;
-
-    if (text === '') return setSearch('');
-
-    // accept only letters | - | () | , | spaces
-    const regex = /(^[A-Za-z-(), ]+$)/g;
-
-    if (!text.match(regex)) return;
-
-    if (text.length > 20) return;
-
-    setSearch(text);
-  };
-
   return (
     <Box sx={RootContainer}>
-      <NavBar search={search} handleSearch={handleSearch} />
+      <NavBar search={search} setSearch={setSearch} />
       <CountriesGrid data={data} />
     </Box>
   );

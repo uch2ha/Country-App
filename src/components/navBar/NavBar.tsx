@@ -14,17 +14,34 @@ import { useNavigate } from 'react-router-dom';
 
 interface INavBar {
   search?: string;
-  handleSearch?: React.ChangeEventHandler<HTMLInputElement>;
+  setSearch?: Function;
 }
 
-const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
+const NavBar: React.FC<INavBar> = ({ search, setSearch }) => {
   const navigation = useNavigate();
+
+  const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (setSearch) {
+      const text = e.target.value;
+
+      if (text === '') return setSearch('');
+
+      // accept only letters | - | () | , | spaces
+      const regex = /(^[A-Za-z-(), ]+$)/g;
+
+      if (!text.match(regex)) return;
+
+      if (text.length > 20) return;
+
+      setSearch(text);
+    }
+  };
 
   return (
     <Box
       sx={NavContainer}
       style={
-        handleSearch
+        setSearch
           ? {}
           : {
               justifyContent: 'center',
@@ -39,7 +56,7 @@ const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
           Dmitry Sinyavskiy &nbsp;|&nbsp; Countries App
         </Typography>
       </a>
-      {handleSearch && (
+      {setSearch && (
         <Box sx={NavRightSide}>
           <Button
             variant='outlined'
