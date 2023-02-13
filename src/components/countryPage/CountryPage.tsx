@@ -73,10 +73,19 @@ const CountryPage: React.FC = () => {
           </CardContent>
           <CardActions disableSpacing sx={CountryCardMapBtnContainer}>
             <IconButton aria-label='maps' sx={CountryCardMapBtn}>
-              <a href={context?.country?.googleMaps} target='_blank'>
+              <a
+                href={context?.country?.googleMaps}
+                target='_blank'
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'gray',
+                }}
+              >
                 <PlaceIcon sx={{ fontSize: 30, color: '#343434' }} />
+                <Typography>{context?.country?.official_name}</Typography>
               </a>
-              <Typography>{context?.country?.official_name}</Typography>
             </IconButton>
           </CardActions>
         </Card>
