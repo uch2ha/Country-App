@@ -1,19 +1,20 @@
 # Dmitry Sinyavskiy Country Application
 
+### https://dmitry-sinyavskiy-countries-app.netlify.app/
+
 ## Built with
 
 <!-- ICONS found at: ht<rtps://github.com/devicons/devicon/tree/master/icons -->
 <div> 
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" title="TS" alt="TS" width="50" height="50"/>&nbsp;
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" title="JS" alt="JS" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" title="Materialui" alt="Materialui" width="50" height="50"/>&nbsp;
 </div>
 
 - React application is written in Typescript
 - The user interface is divided into pages that are routed through react-router-dom.
 - Materialui is used for styling
-- Tests are implemented with JavaScript language
+- Tests are implemented with Typescript language
 
 ## Installation
 
@@ -61,19 +62,11 @@ npm run preview
 
 ![Main Page](screenshots/mainPage_1.jpg)
 
-- You can use the search field to search by country name
+- You can use the `search field` to search by country name
 
 ![Main Page search](screenshots/mainPage_search.jpg)
 
-- Select a country to see more information about it
-
-![Main Page select](screenshots/mainPage_select.jpg)
-
-- Press the map button to open a new google maps tab with the country location
-
-![Main Page select](screenshots/countryPage_1.jpg)
-
-- You can sort countries by name, region, and population
+- You can `sort` countries by name, region, and population
 
 ![History page 1](screenshots/main_page_sort_1.jpg)
 
@@ -81,7 +74,23 @@ npm run preview
 
 ![History page 1](screenshots/main_page_sort_2.jpg)
 
-- By pressing on Logo you will be redirected to this GitHub repository
+- Press on country row to see more information about it
+
+![Main Page select](screenshots/mainPage_select.jpg)
+
+- Press the `map` button to open a new google maps tab with the country location
+
+- Press `like` button to save / remove country to Favorites page
+
+![Main Page select](screenshots/countryPage_1.jpg)
+
+- All your liked countries are saved in localStorage and can be found on Favorites tab
+
+![Main Page select](screenshots/favPage.jpg)
+
+- `Remove all` will clear your localStorage
+
+- By pressing on Logo it will open new tab with this GitHub repository
 
 ## Testing
 

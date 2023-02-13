@@ -86,7 +86,7 @@ const NavBar: React.FC<INavBar> = ({ search, setSearch, favPage }) => {
             endIcon={<LanguageIcon />}
             onClick={() => navigation('/')}
           >
-            Main
+            Main Page
           </Button>
           <Button
             variant='outlined'
