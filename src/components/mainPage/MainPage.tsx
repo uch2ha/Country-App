@@ -69,6 +69,7 @@ const MainPage: React.FC = () => {
       flex: 1,
       minWidth: 400,
       renderCell: (params) => <img src={params.value} width={200} />,
+      sortable: false,
     },
     { field: 'common_name', headerName: 'Name', flex: 1 },
     { field: 'region', headerName: 'Region', flex: 1 },
@@ -85,6 +86,7 @@ const MainPage: React.FC = () => {
           ))}
         </Stack>
       ),
+      sortable: false,
     },
   ];
 
