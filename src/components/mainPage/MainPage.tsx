@@ -1,19 +1,14 @@
-import { Box, Typography } from '@mui/material';
 import React, { useState, useContext, useEffect } from 'react';
-import {
-  CountriesGrid,
-  MainContainer,
-  NavContainer,
-  NavLogo,
-  NavSearch,
-} from '../../sxStyles';
+import { Box, Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { DataGrid } from '@mui/x-data-grid/DataGrid';
 import { ICountry } from '../../interfaces/country.interface';
-import { fetchAllCountries, fetchCountriesByName } from '../../fetchFunctions';
 import { Stack } from '@mui/system';
 import { TheContext } from '../../TheContext';
 import { useNavigate } from 'react-router-dom';
+import { fetchAllCountries, fetchCountriesByName } from '../../fetchFunctions';
+import { CountriesGrid, MainContainer } from '../../sxStyles';
+
 import NavBar from '../navBar/NavBar';
 
 const MainPage: React.FC = () => {
@@ -48,7 +43,18 @@ const MainPage: React.FC = () => {
   };
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setSearch(e.target.value);
+    const text = e.target.value;
+
+    if (text === '') return setSearch('');
+
+    // accept only letters | - | () | , | spaces
+    const regex = /(^[A-Za-z-(), ]+$)/g;
+
+    if (!text.match(regex)) return;
+
+    if (text.length > 20) return;
+
+    setSearch(text);
   };
 
   const handleCellClick = (data: ICountry) => {
