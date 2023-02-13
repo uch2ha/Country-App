@@ -23,6 +23,9 @@ const filterData = (countries: any[]): ICountry[] => {
       languages = Object.values(country.languages);
     }
 
+    // console.log(country.name.common.includes('0') && country.name.common);
+    // console.log(country.name.official.includes('0') && country.name.official);
+
     return {
       id,
       common_name,
