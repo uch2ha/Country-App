@@ -9,7 +9,7 @@ export interface ICountry {
   googleMaps: string;
   population: number;
   area: number;
-  languages: Array<string>;
+  languages: string[];
   independent: boolean;
   flag: string;
 }

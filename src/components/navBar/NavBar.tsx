@@ -30,6 +30,7 @@ const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
       {handleSearch && (
         <TextField
           inputProps={{
+            'data-testid': 'search-input',
             style: { color: 'white' },
             root: {
               borderColor: 'orange',
