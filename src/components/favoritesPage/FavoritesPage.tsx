@@ -7,6 +7,7 @@ import CountriesGrid from '../countriesGrid/CountriesGrid';
 import { fetchLocalStorage } from '../../functions/localStorage.fn';
 
 const FavoritesPage: React.FC = () => {
+  const [lSData, setLSData] = useState<ICountry[]>([]);
   const [data, setData] = useState<ICountry[]>([]);
   const [search, setSearch] = useState<string>('');
 
@@ -15,22 +16,30 @@ const FavoritesPage: React.FC = () => {
     getAllCountries();
   }, []);
 
-  // // get countries by name, if name is empty search for all countries
-  // useEffect(() => {
-  //   if (search === '') {
-  //     getAllCountries();
-  //   } else {
-  //     getCountriesByName(search);
-  //   }
-  // }, [search]);
+  // get fav countries by name, if name is empty get all fav countries
+  useEffect(() => {
+    if (search === '') {
+      getAllCountries();
+    } else {
+      getCountriesByName(search);
+    }
+  }, [search]);
 
   const getAllCountries = () => {
-    setData(fetchLocalStorage());
+    const data = fetchLocalStorage();
+    setLSData(data);
+    setData(data);
   };
 
-  // const getCountriesByName = async (name: string) => {
-  //   setData(await fetchCountriesByName(name));
-  // };
+  const getCountriesByName = async (name: string) => {
+    const filteredData = lSData.filter(
+      (el: ICountry) =>
+        el.common_name.toLowerCase().includes(name.toLowerCase()) ||
+        el.official_name.toLowerCase().includes(name.toLowerCase())
+    );
+
+    setData(filteredData);
+  };
 
   return (
     <Box sx={RootContainer}>
