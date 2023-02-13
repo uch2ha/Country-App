@@ -1,7 +1,7 @@
 import { SxProps } from '@mui/material';
 
 // root
-export const MainContainer: SxProps = {
+export const RootContainer: SxProps = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'start',
@@ -28,7 +28,19 @@ export const NavLogo: SxProps = {
   fontSize: '1.5rem',
 };
 
+export const NavRightSide: SxProps = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+export const NavLikeBtn: SxProps = {
+  height: '56px',
+  marginRight: '2rem',
+  fontSize: '1.1rem',
+};
+
 export const NavSearch: SxProps = {
+  marginLeft: '2rem',
   '& .MuiInputLabel-root': { color: 'white' }, //styles the label
   '& .MuiOutlinedInput-root': {
     '& > fieldset': { borderColor: 'white' },

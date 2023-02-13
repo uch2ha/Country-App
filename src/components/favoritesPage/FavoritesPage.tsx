@@ -1,41 +1,16 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Box } from '@mui/material';
+import React, { useContext, useState } from 'react';
 import { ICountry } from '../../interfaces/country.interface';
 import { TheContext } from '../../TheContext';
-import { fetchAllCountries, fetchCountriesByName } from '../../fetchFunctions';
 import { RootContainer } from '../../sxStyles';
-
+import { Box } from '@mui/material';
 import NavBar from '../navBar/NavBar';
 import CountriesGrid from '../countriesGrid/CountriesGrid';
 
-const MainPage: React.FC = () => {
+const FavoritesPage = () => {
   const [data, setData] = useState<ICountry[]>([]);
   const [search, setSearch] = useState<string>('');
 
   const context = useContext(TheContext);
-
-  // get all countries
-  useEffect(() => {
-    getAllCountries();
-    context?.setCountry(null);
-  }, []);
-
-  // get countries by name, if name is empty search for all countries
-  useEffect(() => {
-    if (search === '') {
-      getAllCountries();
-    } else {
-      getCountriesByName(search);
-    }
-  }, [search]);
-
-  const getAllCountries = async () => {
-    setData(await fetchAllCountries());
-  };
-
-  const getCountriesByName = async (name: string) => {
-    setData(await fetchCountriesByName(name));
-  };
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const text = e.target.value;
@@ -51,7 +26,6 @@ const MainPage: React.FC = () => {
 
     setSearch(text);
   };
-
   return (
     <Box sx={RootContainer}>
       <NavBar search={search} handleSearch={handleSearch} />
@@ -60,4 +34,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-export default MainPage;
+export default FavoritesPage;

@@ -1,6 +1,16 @@
 import React from 'react';
 import { Box, Typography, TextField } from '@mui/material';
-import { NavContainer, NavLogo, NavSearch } from '../../sxStyles';
+import {
+  NavContainer,
+  NavLikeBtn,
+  NavLogo,
+  NavRightSide,
+  NavSearch,
+} from '../../sxStyles';
+import Button from '@mui/material/Button';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import LanguageIcon from '@mui/icons-material/Language';
+import { useNavigate } from 'react-router-dom';
 
 interface INavBar {
   search?: string;
@@ -8,6 +18,8 @@ interface INavBar {
 }
 
 const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
+  const navigation = useNavigate();
+
   return (
     <Box
       sx={NavContainer}
@@ -28,19 +40,39 @@ const NavBar: React.FC<INavBar> = ({ search, handleSearch }) => {
         </Typography>
       </a>
       {handleSearch && (
-        <TextField
-          inputProps={{
-            'data-testid': 'search-input',
-            style: { color: 'white' },
-            root: {
-              borderColor: 'orange',
-            },
-          }}
-          label='Search'
-          sx={NavSearch}
-          value={search}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearch(e)}
-        />
+        <Box sx={NavRightSide}>
+          <Button
+            variant='outlined'
+            sx={NavLikeBtn}
+            endIcon={<LanguageIcon />}
+            onClick={() => navigation('/')}
+          >
+            Main
+          </Button>
+          <Button
+            variant='outlined'
+            sx={NavLikeBtn}
+            endIcon={<FavoriteBorderIcon />}
+            onClick={() => navigation('/favorites')}
+          >
+            Favorites
+          </Button>
+          <TextField
+            inputProps={{
+              'data-testid': 'search-input',
+              style: { color: 'white' },
+              root: {
+                borderColor: 'orange',
+              },
+            }}
+            label='Search'
+            sx={NavSearch}
+            value={search}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleSearch(e)
+            }
+          />
+        </Box>
       )}
     </Box>
   );

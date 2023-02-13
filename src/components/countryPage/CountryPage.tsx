@@ -8,7 +8,7 @@ import {
   CountryCardImg,
   CountryCardMapBtn,
   CountryCardText,
-  MainContainer,
+  RootContainer,
   CountryCardMapBtnContainer,
   CountryCardTextContaner,
   CountryPageContainer,
@@ -32,7 +32,7 @@ const CountryPage: React.FC = () => {
   const navigation = useNavigate();
 
   return (
-    <Box sx={MainContainer}>
+    <Box sx={RootContainer}>
       <NavBar />
       <Box sx={CountryPageContainer}>
         <Card sx={CountryCardContainer}>
