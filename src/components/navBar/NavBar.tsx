@@ -73,7 +73,7 @@ const NavBar: React.FC<INavBar> = ({ search, setSearch, favPage }) => {
                   )
                 ) {
                   removeAllLocalStorage();
-                  navigation(0);
+                  navigation('/');
                 }
               }}
             >
