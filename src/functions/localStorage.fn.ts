@@ -10,30 +10,11 @@ export const updateLocalStorage = (item: ICountry): void => {
 
   const data = JSON.parse(stringData);
 
-  // let isDuplicate = false;
+  // if country was in local storage remove it
+  if (checkIsFavorite(item.official_name))
+    return removeOneItemLocalStorage(item.official_name);
 
-  // // check if array contains same item as current
-  // data.forEach((el: ICountry) => {
-  //   const { common_name, official_name } = el;
-  //   const {
-  //     cartValue: cartValue2,
-  //     distance: distance2,
-  //     itemsAmount: itemsAmount2,
-  //     userDate: userDate2,
-  //   } = item;
-
-  //   if (
-  //     cartValue === cartValue2 &&
-  //     distance === distance2 &&
-  //     itemsAmount === itemsAmount2 &&
-  //     userDate === userDate2
-  //   ) {
-  //     isDuplicate = true;
-  //   }
-  // });
-
-  // if (isDuplicate) return;
-
+  // if not add to local storage
   data.push(item);
 
   //set updated array of items to local storage
@@ -52,7 +33,7 @@ export const fetchLocalStorage = (): ICountry[] => {
 };
 
 // check if the country exist in fav list
-export const checkIsFavorite = (id: string): boolean => {
+export const checkIsFavorite = (official_name: string): boolean => {
   const stringData = localStorage.getItem('CountriesData');
 
   if (!stringData) return false;
@@ -62,7 +43,7 @@ export const checkIsFavorite = (id: string): boolean => {
   let isFavorite = false;
 
   data.every((item: ICountry) => {
-    if (item.id === id) {
+    if (item.official_name === official_name) {
       isFavorite = true;
       // stop loop
       return false;
@@ -74,14 +55,16 @@ export const checkIsFavorite = (id: string): boolean => {
 };
 
 //removes a single item from local storage based on its id
-export const removeOneItemLocalStorage = (id: string): void => {
+export const removeOneItemLocalStorage = (official_name: string): void => {
   const stringData = localStorage.getItem('CountriesData');
 
   if (!stringData) return;
 
   const data = JSON.parse(stringData);
 
-  const updatedData = data.filter((el: ICountry) => el.id !== id);
+  const updatedData = data.filter(
+    (el: ICountry) => el.official_name !== official_name
+  );
 
   localStorage.setItem('CountriesData', JSON.stringify(updatedData));
 };

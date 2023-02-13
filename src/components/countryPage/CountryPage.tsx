@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { TheContext } from '../../TheContext';
 import NavBar from '../navBar/NavBar';
 import {
@@ -9,9 +9,10 @@ import {
   CountryCardMapBtn,
   CountryCardText,
   RootContainer,
-  CountryCardMapBtnContainer,
+  CountryCardBtnContainer,
   CountryCardTextContaner,
   CountryPageContainer,
+  CountryCardFavBtn,
 } from '../../sxStyles';
 import {
   Box,
@@ -25,11 +26,27 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import PlaceIcon from '@mui/icons-material/Place';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useNavigate } from 'react-router-dom';
+import {
+  updateLocalStorage,
+  checkIsFavorite,
+} from '../../functions/localStorage.fn';
 
 const CountryPage: React.FC = () => {
+  const [isFav, setIsFav] = useState(false);
+
   const context = useContext(TheContext);
   const navigation = useNavigate();
+
+  useEffect(() => {
+    updateFavState();
+  }, []);
+
+  const updateFavState = () => {
+    setIsFav(checkIsFavorite(context?.country?.official_name));
+  };
 
   return (
     <Box sx={RootContainer}>
@@ -71,7 +88,7 @@ const CountryPage: React.FC = () => {
               independent, according to the CIA World Factbook
             </Typography>
           </CardContent>
-          <CardActions disableSpacing sx={CountryCardMapBtnContainer}>
+          <CardActions disableSpacing sx={CountryCardBtnContainer}>
             <IconButton aria-label='maps' sx={CountryCardMapBtn}>
               <a
                 href={context?.country?.googleMaps}
@@ -86,6 +103,24 @@ const CountryPage: React.FC = () => {
                 <PlaceIcon sx={{ fontSize: 30, color: '#343434' }} />
                 <Typography>{context?.country?.official_name}</Typography>
               </a>
+            </IconButton>
+            <IconButton
+              aria-label='maps'
+              sx={CountryCardFavBtn}
+              onClick={
+                // if country exists in local storage remove it
+                // if not add it
+                () => {
+                  updateLocalStorage(context?.country);
+                  updateFavState();
+                }
+              }
+            >
+              {isFav ? (
+                <FavoriteIcon sx={{ fontSize: 35, color: 'red' }} />
+              ) : (
+                <FavoriteBorderIcon sx={{ fontSize: 35, color: 'red' }} />
+              )}
             </IconButton>
           </CardActions>
         </Card>

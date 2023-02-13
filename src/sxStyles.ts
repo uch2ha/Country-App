@@ -111,13 +111,18 @@ export const CountryCardText: SxProps = {
   fontSize: '1.3rem',
   color: '#0f0f0f',
 };
-export const CountryCardMapBtnContainer: SxProps = {
+export const CountryCardBtnContainer: SxProps = {
   width: '100%',
+  justifyContent: 'space-between',
 };
+
 export const CountryCardMapBtn: SxProps = {
-  padding: '0',
-  paddingLeft: '2rem',
-  paddingTop: '0.5rem',
-  paddingBottom: '0.5rem',
+  padding: '0.5rem',
+  marginLeft: '1.5rem',
   color: '#989898',
+};
+
+export const CountryCardFavBtn: SxProps = {
+  padding: '0.5rem',
+  marginRight: '1.5rem',
 };
