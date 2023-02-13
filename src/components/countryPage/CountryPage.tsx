@@ -45,7 +45,8 @@ const CountryPage: React.FC = () => {
   }, []);
 
   const updateFavState = () => {
-    setIsFav(checkIsFavorite(context?.country?.official_name));
+    if (context?.country?.official_name)
+      setIsFav(checkIsFavorite(context?.country?.official_name));
   };
 
   return (
@@ -111,8 +112,10 @@ const CountryPage: React.FC = () => {
                 // if country exists in local storage remove it
                 // if not add it
                 () => {
-                  updateLocalStorage(context?.country);
-                  updateFavState();
+                  if (context?.country) {
+                    updateLocalStorage(context?.country);
+                    updateFavState();
+                  }
                 }
               }
             >
