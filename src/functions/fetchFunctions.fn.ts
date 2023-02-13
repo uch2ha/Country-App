@@ -1,6 +1,6 @@
 import ky from 'ky';
 import { v4 as uuidv4 } from 'uuid';
-import { ICountry } from './interfaces/country.interface';
+import { ICountry } from '../interfaces/country.interface';
 
 //  filter to get only needed data and add the id property to each
 const filterData = (countries: any[]): ICountry[] => {
@@ -22,9 +22,6 @@ const filterData = (countries: any[]): ICountry[] => {
     if (country.languages) {
       languages = Object.values(country.languages);
     }
-
-    // console.log(country.name.common.includes('0') && country.name.common);
-    // console.log(country.name.official.includes('0') && country.name.official);
 
     return {
       id,

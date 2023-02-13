@@ -3,6 +3,7 @@ import TheContextProvider, { TheContext } from './TheContext';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import MainPage from './components/mainPage/MainPage';
 import CountryPage from './components/countryPage/CountryPage';
+import FavoritesPage from './components/favoritesPage/FavoritesPage';
 
 const App: React.FC = () => {
   // if you try to open one country page without country data in context
@@ -17,6 +18,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<MainPage />} />
+          <Route path='/favorites' element={<FavoritesPage />} />
           <Route
             path='/country'
             element={
