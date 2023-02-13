@@ -43,7 +43,7 @@ const FavoritesPage: React.FC = () => {
 
   return (
     <Box sx={RootContainer}>
-      <NavBar search={search} setSearch={setSearch} />
+      <NavBar search={search} setSearch={setSearch} favPage={true} />
       <CountriesGrid data={data} />
     </Box>
   );

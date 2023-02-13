@@ -10,14 +10,17 @@ import {
 import Button from '@mui/material/Button';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LanguageIcon from '@mui/icons-material/Language';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useNavigate } from 'react-router-dom';
+import { removeAllLocalStorage } from '../../functions/localStorage.fn';
 
 interface INavBar {
   search?: string;
   setSearch?: Function;
+  favPage?: boolean;
 }
 
-const NavBar: React.FC<INavBar> = ({ search, setSearch }) => {
+const NavBar: React.FC<INavBar> = ({ search, setSearch, favPage }) => {
   const navigation = useNavigate();
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -58,6 +61,25 @@ const NavBar: React.FC<INavBar> = ({ search, setSearch }) => {
       </a>
       {setSearch && (
         <Box sx={NavRightSide}>
+          {favPage && (
+            <Button
+              variant='outlined'
+              sx={NavLikeBtn}
+              endIcon={<DeleteForeverIcon />}
+              onClick={() => {
+                if (
+                  window.confirm(
+                    'Are you sure you want to delete all countries from favorites?'
+                  )
+                ) {
+                  removeAllLocalStorage();
+                  navigation(0);
+                }
+              }}
+            >
+              Remove All
+            </Button>
+          )}
           <Button
             variant='outlined'
             sx={NavLikeBtn}
