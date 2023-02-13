@@ -29,8 +29,3 @@ a {
   text-decoration: none;
   outline: none;
 }
-
-/* Remove scrollbar */
-::-webkit-scrollbar {
-  display: none;
-}

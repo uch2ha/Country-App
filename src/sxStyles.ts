@@ -1,5 +1,4 @@
 import { SxProps } from '@mui/material';
-import { calculatePinnedRowsHeight } from '@mui/x-data-grid/hooks/features/rows/gridRowsUtils';
 
 // root
 export const MainContainer: SxProps = {
@@ -69,6 +68,11 @@ export const CountryCardContainer: SxProps = {
   alignItems: 'center',
   width: '40%',
   overflow: 'scroll',
+
+  /* Remove scrollbar from country page only */
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
 };
 
 export const CountryCardHeader: SxProps = {
