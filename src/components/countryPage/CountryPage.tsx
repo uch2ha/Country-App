@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { TheContext } from '../../TheContext';
-import { ICountry } from '../../interfaces/country.interface';
 import NavBar from '../navBar/NavBar';
 import {
   CardBackBtn as CardCloseBtn,
