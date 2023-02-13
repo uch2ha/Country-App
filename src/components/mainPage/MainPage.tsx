@@ -14,7 +14,7 @@ import NavBar from '../navBar/NavBar';
 const MainPage: React.FC = () => {
   const [data, setData] = useState<ICountry[]>([]);
   const [search, setSearch] = useState<string>('');
-  const [pageSize, setPageSize] = useState<number>(4);
+  const [pageSize, setPageSize] = useState<number>(5);
 
   const context = useContext(TheContext);
   const navigation = useNavigate();
@@ -93,13 +93,13 @@ const MainPage: React.FC = () => {
       <NavBar search={search} handleSearch={handleSearch} />
       <DataGrid
         columns={COLUMNS_COUNTRIES}
-        rowHeight={175}
+        rowHeight={170}
         rows={data}
         sx={CountriesGrid}
         pageSize={pageSize}
         onCellClick={(params) => handleCellClick(params.row)}
         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[4, 8, 12, 16, 20]}
+        rowsPerPageOptions={[5, 10, 20, 40, 80]}
         pagination
       ></DataGrid>
     </Box>
