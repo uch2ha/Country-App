@@ -1,4 +1,4 @@
-import { createContext, useState, FC, ReactNode, useEffect } from 'react';
+import { createContext, useState, FC, ReactNode } from 'react';
 import { IContext } from './interfaces/context.interface';
 import { ICountry } from './interfaces/country.interface';
 
