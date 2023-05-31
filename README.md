@@ -1,4 +1,4 @@
-# Dmitry Sinyavskiy Country Application
+# Country Application
 
 ### https://dmitry-sinyavskiy-countries-app.netlify.app/
 
