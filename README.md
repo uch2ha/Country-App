@@ -1,5 +1,7 @@
 # Country Application
 
+The Countries Search app is a React-based tool that provides information about different countries. Built with TypeScript and Material UI, it offers a seamless user experience for searching and exploring country details. This project was created with the goal of learning TypeScript, testing techniques, and utilizing Material UI for responsive and visually appealing designs. 
+
 ### https://dmitry-sinyavskiy-countries-app.netlify.app/
 
 ## Built with
