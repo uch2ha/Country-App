@@ -16,7 +16,7 @@ The Countries Search app is a React-based tool that provides information about d
 - React application is written in Typescript
 - The user interface is divided into pages that are routed through react-router-dom.
 - Materialui is used for styling
-- Tests are implemented with Typescript language
+- Tests are implemented with Jest
 
 ## Installation
 
